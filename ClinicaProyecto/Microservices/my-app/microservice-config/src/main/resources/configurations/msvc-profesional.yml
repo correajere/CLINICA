@@ -1,5 +1,5 @@
 server:
-  port: 8090
+  port: 8093
 
 spring:
   application:
@@ -8,7 +8,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/profesionalDb
     username: root
-    password: 150919 # para probar nomas
+    password: 502140
   jpa:
     hibernate:
       ddl-auto: create

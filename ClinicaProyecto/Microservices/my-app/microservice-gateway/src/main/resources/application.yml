@@ -1,9 +1,9 @@
-eureka:
-  client:
-    register-with-eureka: false
+#eureka:
+#  client:
+#    register-with-eureka: false
 
-server:
-  port: 8080
+#server:
+#  port: 8080
 
 spring:
   application:
@@ -11,21 +11,21 @@ spring:
   config:
     import: optional:configserver:http://localhost:8888
 
-  cloud:
-    gateway:
-      discovery:
-        locator:
-          enabled: true
-      routes:
-        - id: pacientes
-          uri: http://localhost:8091
-          predicates:
-            - Path=/api/pacientes/**
-        - id: profesionales
-          uri: http://localhost:8090
-          predicates:
-            - Path=/api/profesionales/**
-        - id: turnos
-          uri: http://localhost:8092
-          predicates:
-            - Path=/api/turnos/**
+#  cloud:
+#    gateway:
+#      discovery:
+#        locator:
+#          enabled: true
+#      routes:
+#        - id: pacientes
+#          uri: http://localhost:8091
+#          predicates:
+#            - Path=/api/pacientes/**
+#        - id: profesionales
+#          uri: http://localhost:8090
+#          predicates:
+#            - Path=/api/profesionales/**
+#        - id: turnos
+#          uri: http://localhost:8092
+#          predicates:
+#            - Path=/api/turnos/**
