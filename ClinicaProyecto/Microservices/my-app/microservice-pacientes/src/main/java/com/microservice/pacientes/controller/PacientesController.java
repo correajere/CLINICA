@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/api/pacientes")
 public class PacientesController {
@@ -14,10 +16,17 @@ public class PacientesController {
     @Autowired
     private IPacientesService pacientesService;
 
+
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
     public void savePacientes(@RequestBody Pacientes pacientes){
         pacientesService.save(pacientes);
+    }
+
+    @PostMapping("/update/{id}")
+    public ResponseEntity<?> updatePaciente(@PathVariable Long id, @RequestBody Pacientes paciente){
+        Optional<Pacientes> pacienteActualizado = pacientesService.updatePaciente(id, paciente);
+        return ResponseEntity.ok(pacienteActualizado);
     }
 
     @GetMapping("/all")
@@ -35,4 +44,11 @@ public class PacientesController {
     public ResponseEntity<?> findByIdTurno(@PathVariable Long idTurno){
         return ResponseEntity.ok(pacientesService.findByIdTurno(idTurno));
     }
+
+    @DeleteMapping("/delete/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void deletePacientes(@PathVariable Long id) {
+        pacientesService.delete(id);
+    }
+
 }
